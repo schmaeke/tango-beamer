@@ -1,0 +1,116 @@
+%% Tango color-theme for LaTeX Beamer
+%% By Jan Niklas Schmäke created on 21.12.2024
+%% https://github.com/schmaeke/tango-beamer
+
+% Load required packages
+\RequirePackage{fontawesome5}
+\RequirePackage{caption}
+\RequirePackage{shadowtext}
+\RequirePackage{tikz}
+
+\usetikzlibrary{calc}
+
+% Set size of the inner theme
+\setbeamersize{text margin left = 5mm, text margin right = 5mm}
+
+% Remove navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Set blocks
+\setbeamertemplate{blocks}[shadow=false]
+
+% Frame title
+\setbeamertemplate{frametitle}
+{%
+	{%
+		\usebeamercolor{framesection}%
+		\color{fg}%
+		\usebeamerfont{framesection}%
+		\strut\secname \\[-0.8mm]
+	}%
+	{%
+		\usebeamercolor{frametitle}%
+		\color{fg}%
+		\usebeamerfont{frametitle}%
+		\strut\insertframetitle
+	}%
+}
+
+% Table of contents
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.\enspace\inserttocsection}
+\setbeamertemplate{subsection in toc}{\enspace\enspace-\enspace\inserttocsubsection\\}
+
+% Enumerate & Itemize settings
+\setbeamertemplate{enumerate items}[default]
+
+\setbeamertemplate{itemize item}{\small\faChevronCircleRight}
+\setbeamertemplate{itemize subitem}{\small\faChevronRight}
+\setbeamertemplate{itemize subsubitem}{\small\faMinus}
+
+% Bibliography settings
+\setbeamertemplate{bibliography item}{\color{darkblue}\faQuoteRight}
+
+% Title page
+\setbeamertemplate{title page}{%
+	\begin{tikzpicture}[remember picture, overlay]%
+		\begin{scope}
+			\fill[fg] (current page.north west) rectangle ++(\paperwidth, -0.75\paperheight);
+			\clip (current page.north west) rectangle ++(\paperwidth, -0.75\paperheight);
+			\node[opacity = 0.9] at ($(current page.north) + (0mm, -0.35\paperheight)$) {%
+				\includegraphics[height = \paperheight]{background.png}%
+			};
+		\end{scope}
+		\fill[left color = darkblue, right color = lightblue]
+			($(current page.north west) + (0mm, -0.75\paperheight)$) rectangle ++(\paperwidth, 2mm);
+
+		\node[below right, xshift = 8mm, yshift = -8mm] at (current page.north west) {%
+			\begin{minipage}{0.8\paperwidth}%
+				\raggedright%
+				\usebeamercolor{title}%
+				\usebeamerfont{title}%
+				\color{fg}%
+				\inserttitle \\[2mm]
+				\usebeamercolor{subtitle}%
+				\usebeamerfont{subtitle}%
+				\color{fg}%
+				\insertsubtitle%
+			\end{minipage}%
+		};
+
+		\node[above right, yshift = 10mm] at ($(current page.south west) + (8mm, 0.25\paperheight)$) {%
+			\@ifundefined{biglogovalue}{%
+				\colorbox{red}{Set logo with \texttt{$\backslash$biglogo\{...\}}}%
+			}{%
+				\includegraphics[height = 12mm]{\biglogovalue}%
+			}
+		};
+
+		\node[right, xshift = 8mm, yshift = 0.125\paperheight] at (current page.south west) {%
+			\begin{minipage}{0.8\paperwidth}%
+				\usebeamerfont{author}%
+				\usebeamercolor{author}%
+				\color{fg}%
+				\@ifundefined{coauthorsvalue}{
+					\insertauthor%
+				}{%
+					\textbf{\insertauthor},\ \coauthorsvalue%
+				} \\[2mm]
+				\usebeamerfont{institute}%
+				\usebeamercolor{institute}%
+				\color{fg}%
+				\insertinstitute \\[2mm]
+				\usebeamerfont{date}%
+				\usebeamercolor{date}%
+				\color{fg}%
+				\insertdate
+			\end{minipage}%
+		};
+	\end{tikzpicture}%
+}
+
+% Captions
+\captionsetup{
+	labelfont = {sf, bf, small},
+	font = {small},
+	justification = raggedright
+}

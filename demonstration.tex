@@ -1,0 +1,332 @@
+\documentclass[8pt, handout, aspectratio = 1510]{beamer}
+
+\usetheme{Tango}
+\setbeameroption{hide notes}
+
+\title{The \textit{Tango} Theme for Beamer}
+\subtitle{Showcase and Demonstration}
+
+\author{John Doe}
+\coauthors{Jason Miller, Tim Turner}
+\institute{Univseristy of Applied Sciences Düsseldorf}
+\date{\today}
+
+\biglogo{hsd_mv_logo_with_text.pdf}
+\smalllogo{hsd_mv_logo_no_text.pdf}
+
+\usepackage[english]{babel} % use 'ngerman' for german.
+\usepackage{tikz}
+
+\usetikzlibrary{decorations.markings}%
+\usetikzlibrary{decorations}%
+\usetikzlibrary{decorations}%
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+
+\begin{filecontents}{references.bib}
+@book{Gould:1994aa,
+	author = {Gould, Phillip L and Feng, Yuan},
+	date-added = {2024-08-07 17:28:38 +0200},
+	date-modified = {2024-08-07 17:28:49 +0200},
+	keywords = {Solid Mechanics},
+	publisher = {Springer},
+	title = {Introduction to linear elasticity},
+	volume = {2},
+	year = {1994},
+}
+
+@book{Bathe:2006aa,
+	author = {Bathe, Klaus-J{\"u}rgen},
+	date-added = {2024-08-07 17:22:51 +0200},
+	date-modified = {2024-08-07 17:23:00 +0200},
+	keywords = {Finite Element Method},
+	publisher = {Klaus-Jurgen Bathe},
+	title = {Finite element procedures},
+	year = {2006},
+}
+
+@book{Anand:2020aa,
+	author = {Anand, Lallit and Govindjee, Sanjay},
+	date-added = {2024-08-07 17:21:00 +0200},
+	date-modified = {2024-08-07 17:22:21 +0200},
+	keywords = {Solid Mechanics},
+	publisher = {Oxford University Press},
+	title = {Continuum mechanics of solids},
+	year = {2020},
+}
+\end{filecontents}
+
+\begin{document}
+
+	% \maketitle
+	\begin{frame}[plain,noframenumbering]
+    \titlepage
+  \end{frame}%
+
+	\sectionframe{Introduction}
+	\begin{frame}[allowframebreaks]{Content}
+		\tableofcontents
+	\end{frame}
+
+	\sectionframe{Elements}
+	\begin{frame}{Lists}
+		\subsection{Enumerate}
+		List using the '\texttt{enumerate}' environment:
+		\begin{enumerate}
+			\item First item.
+			\item Second item.
+			\begin{enumerate}
+				\item Sub-list first item.
+				\item Sub-list second item.
+				\begin{enumerate}
+					\item Sub-sub-list first item.
+					\item Sub-sub-list second item.
+				\end{enumerate}
+			\end{enumerate}
+		\end{enumerate}
+
+		\vspace{5mm}
+		\subsection{Itemize}
+		List using the '\texttt{itemize}' environment:
+		\begin{itemize}
+			\item First item.
+			\item Second item.
+			\begin{itemize}
+				\item Sub-list first item.
+				\item Sub-list second item.
+				\begin{itemize}
+					\item Sub-sub-list first item.
+					\item Sub-sub-list second item.
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Alert, Blocks \& Links}
+		\subsection{Alert}
+		\alert{Sample of the '\texttt{alert}' command.}
+
+		\vspace{5mm}
+		\subsection{Blocks}
+		\begin{block}{Conventional Block}
+			This block can be used to highlight key information of a given slide.
+		\end{block}
+
+		\begin{exampleblock}{Example Block}
+			Examples of different concepts can be placed inside this block.
+		\end{exampleblock}
+
+		\begin{alertblock}{Alert Block}
+			Furthermore, one can put very important information inside this block.
+		\end{alertblock}
+
+		\vspace*{5mm}
+		This is a web-link \weblink{github.com/schmaeke/tango-beamer}.
+
+		\vspace*{5mm}
+		Here we cite \cite{Anand:2020aa}.
+	\end{frame}
+
+	\begin{frame}[fragile]{Code Blocks}
+		\subsection{Code Blocks}
+
+		\begin{lstlisting}[language = julia, caption = {Some random code}]
+using Stela, Stela.Tensors
+
+# Create some tensors
+a = Tensors.rand(Float16, 5, 10)
+b = Tensors.rand(Float16, 10, 3)
+
+# Do some computations
+c = sum(a * b)^Float16(4)
+
+# Pass through the graph
+forward(c)  # Compute c, result stored in c.data
+backward(c) # Compute derivatives of c, stored in *.grad
+
+println("dc/da = (a.grad)")
+println("dc/db = (b.grad)")
+
+# Visualize
+to_dot_graph(c, "graph_file"; create_svg=true) # Export to Graphviz
+		\end{lstlisting}
+
+	\end{frame}
+
+	\sectionframe{Practical}
+	\begin{frame}{Some Math \& Figures}
+
+		\subsection{Math}
+		\begin{columns}
+			\column{0.6\textwidth}
+				\begin{itemize}
+					\item Equilibrium conditions
+							\begin{subequations}
+								\begin{align}
+									-\nabla \cdot \boldsymbol{\sigma} &= \boldsymbol{p} &&\forall \boldsymbol{x} \in \Omega \\
+									\boldsymbol{\sigma} \cdot \boldsymbol{n} &= \boldsymbol{t} &&\forall \boldsymbol{x} \in \Gamma_N \\
+									\boldsymbol{u} &= \overline{\boldsymbol{u}} &&\forall \boldsymbol{x} \in \Gamma_D
+								\end{align}
+							\end{subequations}
+
+					\item Linear strain-displacement relation
+						\begin{equation}
+							\boldsymbol{\varepsilon} = \frac{1}{2} \left( \nabla \boldsymbol{u} + \nabla \boldsymbol{u}^T \right)
+						\end{equation}
+
+					\item Constitutive equation
+						\begin{equation}
+							\boldsymbol{\sigma} = \boldsymbol{C} : \boldsymbol{\varepsilon}
+						\end{equation}
+
+					\item Resulting weighted-residual form
+						\begin{equation}
+							\begin{aligned}
+								\int \limits_\Omega \boldsymbol{\varepsilon}(\boldsymbol{v}) : \boldsymbol{C} : \boldsymbol{\varepsilon}(\boldsymbol{u}_h) \,\textrm{d}\Omega
+								&= \int \limits_\Omega \boldsymbol{v}\ \boldsymbol{p}\ \textrm{d}\Omega
+								+ \int \limits_{\Gamma_N} \boldsymbol{v}\ \boldsymbol{t}\ \textrm{d}\partial\Omega
+								+ \int \limits_{\Gamma_D} \boldsymbol{v}\ \boldsymbol{t}\ \textrm{d}\partial\Omega \\
+								\land \quad \boldsymbol{u}_h &= \overline{\boldsymbol{u}} \quad \forall \boldsymbol{x} \in \Gamma_D \\
+							\end{aligned}
+						\end{equation}
+
+				\end{itemize}
+
+			\column{0.35\textwidth}
+			\subsection{Figures}
+			\vspace*{-10mm}
+			\begin{figure}
+				\begin{center}
+					\resizebox{!}{6.5cm}{
+						\begin{tikzpicture}
+							% b.c.
+							\draw[foreground, decorate, decoration = {
+								markings,
+								mark = between positions 0cm and 0.56cm step 0.8mm with {
+									\draw[cyan] (0, 0) -- (0.1, -0.15);
+								}
+								pre = curveto,
+								post = curveto,
+								transform = {shift only},
+							}]
+							(1.5, 0.5) to[out = 10, in = -90]
+							++(1.5, 2) to[out = 90, in = 0]
+							++(-1, 1) to[out = 180, in = 30]
+							++(-1, -1) to[out = -150, in = 90]
+							++(-1, -1) to[out = -90, in = 190]
+							cycle;
+
+							\draw[foreground, decorate, decoration = {
+								markings,
+								mark = between positions 4.5cm and 5cm step 1.2mm with {
+									\draw[red, -stealth] (0, 0) -- (-0.2, 0.2);
+								}
+								pre = curveto,
+								post = curveto,
+								transform = {shift only},
+							}]
+							(1.5, 0.5) to[out = 10, in = -90]
+							++(1.5, 2) to[out = 90, in = 0]
+							++(-1, 1) to[out = 180, in = 30]
+							++(-1, -1) to[out = -150, in = 90]
+							++(-1, -1) to[out = -90, in = 190]
+							cycle;
+
+							% org. problem
+							\draw[foreground, fill = aluminium0]
+							(1.5, 0.5) to[out = 10, in = -90]
+							++(1.5, 2) to[out = 90, in = 0]
+							++(-1, 1) to[out = 180, in = 30]
+							++(-1, -1) to[out = -150, in = 90]
+							++(-1, -1) to[out = -90, in = 190]
+							cycle;
+
+							% shifted
+							\begin{scope}[shift = {(0cm, 0.5cm)}, yscale = 1, rotate = -45]
+
+								% b.c.
+								\draw[foreground, decorate, decoration = {
+									markings,
+									mark = between positions 3cm and 3.56cm step 0.8mm with {
+										\draw[cyan] (0, 0) -- (0.1, -0.15);
+									}
+									pre = curveto,
+									post = curveto,
+									transform = {shift only},
+								}]
+								(1.5, -0.5) to[out = -10, in = 80]
+								++(1, -2) to[out = -100, in = 0]
+								++(-0.5, -1) to[out = 180, in = -30]
+								++(-1.5, 1) to[out = 150, in = -90]
+								++(-1, 0.5) to[out = 90, in = -190] (1.5, -0.5);
+
+								\draw[foreground, decorate, decoration = {
+									markings,
+									mark = between positions 6.6cm and 7.1cm step 1.2mm with {
+										\draw[red, -stealth] (0, 0) -- (-0.2, 0.2);
+									}
+									pre = curveto,
+									post = curveto,
+									transform = {shift only},
+								}]
+								(1.5, -0.5) to[out = -10, in = 80]
+								++(1, -2) to[out = -100, in = 0]
+								++(-0.5, -1) to[out = 180, in = -30]
+								++(-1.5, 1) to[out = 150, in = -90]
+								++(-1, 0.5) to[out = 90, in = -190]
+								(1.5, -0.5);
+
+								\draw[foreground, fill = aluminium0]
+								(1.5, -0.5) to[out = -10, in = 80]
+								++(1, -2) to[out = -100, in = 0]
+								++(-0.5, -1) to[out = 180, in = -30]
+								++(-1.5, 1) to[out = 150, in = -90]
+								++(-1, 0.5) to[out = 90, in = -190]
+								cycle;
+
+							\end{scope}
+
+							\draw[foreground, -latex] (2, -2) -- node[below, pos = 1] {$x_1$} ++(1, 0);
+							\draw[foreground, -latex] (2, -2) -- node[left, pos = 1] {$x_2$} ++(0, 1);
+
+							% domains
+							\node (omegaOrg) at (1.6, 1.6) {$\Omega$};
+							\node (omegaDef) at (-0.4, -1.5) {$\hat{\Omega}$};
+
+							\draw[foreground, -latex] (omegaOrg) to[out = -145, in = 80 ] node[fill = background] {$ + \boldsymbol{u}$} (omegaDef);
+
+							% b.c.
+							\node at (1.35, 3.65) {$\boldsymbol{t}$};
+							\node at (1.05, 3.05) {$\Gamma_N$};
+
+							\node at (1.9, 0.2) {$\overline{\boldsymbol{u}}$};
+							\node at (2.6, 0.7) {$\Gamma_D$};
+
+						\end{tikzpicture}
+					}
+					\caption{Initial $\Omega$ and deformed $\hat{\Omega}$ configuration of solid-mechanics problem.}
+				\end{center}
+			\end{figure}
+		\end{columns}
+	\end{frame}
+
+	\section{Bibliography}
+	\begin{frame}[allowframebreaks]{Literature}
+		\nocite{*}
+		\bibliographystyle{apalike}
+		\bibliography{references.bib}
+	\end{frame}
+
+	\closingframe{%
+		GACM 2025, 11\textsuperscript{th} Colloquium on Computational Mechanics%
+	}{%
+		\begin{tabular}{l r}%
+			Jan Niklas Schmäke & \texttt{jan.schmaeke@hs-duesseldorf.de} \\
+			Martin Ruess & \texttt{martin.ruess@hs-duesseldorf.de} \\
+		\end{tabular}%
+	}{%
+		Funded by the Deutsche Forschungsgemeinschaft (DFG, German Research Foundation) – 515687474.%
+	}
+
+\end{document}
+

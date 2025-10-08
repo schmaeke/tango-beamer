@@ -1,0 +1,59 @@
+%% Tango color-theme for LaTeX Beamer
+%% By Jan Niklas Schmäke created on 21.12.2024
+%% https://github.com/schmaeke/tango-beamer
+
+% Load xcolor and tango package
+\RequirePackage{xcolor}
+\RequirePackage{tango}
+
+\tangolightcolors
+
+% Title frame
+\setbeamercolor*{title}{bg = foreground, fg = background}
+
+% Frame title and section
+\setbeamercolor*{framesection}{bg = background, fg = darkblue}
+\setbeamercolor*{frametitle}{bg = background, fg = lightblue}
+
+% Section frame
+\setbeamercolor*{sectionframe}{bg = darkblue, fg = background}
+\setbeamercolor*{sectionframetitle}{fg = lightblue}
+
+% Text
+\setbeamercolor*{normal text}{bg = background, fg = foreground}
+\setbeamercolor*{inverted text}{bg = foreground, fg = background}
+
+% Frame background
+\setbeamercolor*{background canvas}{bg = background}
+
+% Structure
+\setbeamercolor*{structure}{fg = darkblue}
+
+% Section titles and toc
+\setbeamercolor*{section in head/foot}{fg = darkblue}
+\setbeamercolor*{section in toc}{fg = foreground}
+\setbeamercolor*{section in toc shaded}{fg = foreground!50!background}
+
+% Footline
+\setbeamercolor*{footline}{fg = background, bg = darkblue}
+\setbeamercolor*{progressbar}{fg = lightblue, bg = lightblue!25!background}
+
+% Alerted text
+\setbeamercolor*{alerted text}{fg = darkred}
+
+% Blocks
+\setbeamercolor*{block title}{bg = purple!15!background, fg = darkpurple}
+\setbeamercolor*{block body}{bg = purple!10!background}
+
+\setbeamercolor*{block title example}{bg = green!15!background, fg = darkgreen}
+\setbeamercolor*{block body example}{bg = green!10!background}
+
+\setbeamercolor*{block title alerted}{bg = red!15!background, fg = darkred}
+\setbeamercolor*{block body alerted}{bg = red!10!background}
+
+% Bibliography
+\setbeamercolor{bibliography item}{fg = red}
+\setbeamercolor{bibliography entry author}{fg = darkblue}
+\setbeamercolor{bibliography entry title}{fg = foreground}
+\setbeamercolor{bibliography entry location}{fg = foreground}
+\setbeamercolor{bibliography entry note}{fg = foreground}

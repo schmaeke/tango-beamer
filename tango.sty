@@ -1,0 +1,124 @@
+% 'tango.sty' a TeX port of the Tango Desktop Project
+% [https://en.wikipedia.org/wiki/Tango_Desktop_Project] colors.
+% Author: Jan Niklas Schmäke <jan@schmaeke.dev>
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tango}[Colors of the 'Tango Desktop Project'.]
+
+\RequirePackage{xcolor}
+
+\definecolor{butter0}{HTML}{fce94f}
+\definecolor{butter1}{HTML}{edd400}
+\definecolor{butter2}{HTML}{c4a000}
+
+\definecolor{orange0}{HTML}{fcaf3e}
+\definecolor{orange0}{HTML}{f57900}
+\definecolor{orange0}{HTML}{ce5c00}
+
+\definecolor{chocolate0}{HTML}{e9b96e}
+\definecolor{chocolate1}{HTML}{c17d11}
+\definecolor{chocolate2}{HTML}{8f5902}
+
+\definecolor{chameleon0}{HTML}{8ae234}
+\definecolor{chameleon1}{HTML}{73d216}
+\definecolor{chameleon2}{HTML}{4e9a06}
+
+\definecolor{sky-blue0}{HTML}{729fcf}
+\definecolor{sky-blue1}{HTML}{3465a4}
+\definecolor{sky-blue2}{HTML}{204a87}
+
+\definecolor{plum0}{HTML}{ad7fa8}
+\definecolor{plum1}{HTML}{75507b}
+\definecolor{plum2}{HTML}{5c3566}
+
+\definecolor{scarlet-red0}{HTML}{ef2929}
+\definecolor{scarlet-red1}{HTML}{cc0000}
+\definecolor{scarlet-red2}{HTML}{a40000}
+
+\definecolor{aluminium0}{HTML}{eeeeec}
+\definecolor{aluminium1}{HTML}{d3d7cf}
+\definecolor{aluminium2}{HTML}{babdb6}
+\definecolor{aluminium3}{HTML}{888a85}
+\definecolor{aluminium4}{HTML}{555753}
+\definecolor{aluminium5}{HTML}{2e3436}
+
+\newcommand{\tangolightcolors}{%
+  \definecolor{foreground}{HTML}{000000}
+  \definecolor{background}{HTML}{ffffff}
+
+  \colorlet{body}{foreground!10!background}
+
+  \colorlet{headings}{aluminium4}
+  \colorlet{headerandfooter}{aluminium3}
+
+  \colorlet{lightred}{scarlet-red0}
+  \colorlet{red}{scarlet-red1}
+  \colorlet{darkred}{scarlet-red2}
+
+  \colorlet{lightyellow}{butter0}
+  \colorlet{yellow}{butter1}
+  \colorlet{darkyellow}{butter2}
+
+  \colorlet{lightbrown}{chocolate0}
+  \colorlet{brown}{chocolate1}
+  \colorlet{darkbrown}{chocolate2}
+
+  \colorlet{lightgreen}{chameleon0}
+  \colorlet{green}{chameleon1}
+  \colorlet{darkgreen}{chameleon2}
+
+  \colorlet{lightblue}{sky-blue0}
+  \colorlet{blue}{sky-blue1}
+  \colorlet{darkblue}{sky-blue2}
+
+  \colorlet{lightpurple}{plum0}
+  \colorlet{purple}{plum1}
+  \colorlet{darkpurple}{plum2}
+
+  \colorlet{lightgray}{aluminium1}
+  \colorlet{gray}{aluminium3}
+  \colorlet{darkgray}{aluminium5}
+}
+
+\newcommand{\tangodarkcolors}{%
+  % TODO: Flip.
+  \definecolor{foreground}{HTML}{ffffff}
+  \definecolor{background}{HTML}{000000}
+
+  \colorlet{body}{foreground!10!background}
+
+  \colorlet{headings}{aluminium3}
+  \colorlet{headerandfooter}{aluminium4}
+
+  \colorlet{lightred}{scarlet-red2}
+  \colorlet{red}{scarlet-red1}
+  \colorlet{darkred}{scarlet-red0}
+
+  \colorlet{lightyellow}{butter2}
+  \colorlet{yellow}{butter1}
+  \colorlet{darkyellow}{butter0}
+
+  \colorlet{lightbrown}{chocolate2}
+  \colorlet{brown}{chocolate1}
+  \colorlet{darkbrown}{chocolate0}
+
+  \colorlet{lightgreen}{chameleon2}
+  \colorlet{green}{chameleon1}
+  \colorlet{darkgreen}{chameleon0}
+
+  \colorlet{lightblue}{sky-blue2}
+  \colorlet{blue}{sky-blue1}
+  \colorlet{darkblue}{sky-blue0}
+
+  \colorlet{lightpurple}{plum2}
+  \colorlet{purple}{plum1}
+  \colorlet{darkpurple}{plum0}
+
+  \colorlet{lightgray}{aluminium5}
+  \colorlet{gray}{aluminium3}
+  \colorlet{darkgray}{aluminium4}
+}
+
+\colorlet{linkcolor}{sky-blue2}
+
+\endinput

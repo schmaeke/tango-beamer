@@ -1,0 +1,48 @@
+%% Tango color-theme for LaTeX Beamer
+%% By Jan Niklas Schmäke created on 21.12.2024
+%% https://github.com/schmaeke/tango-beamer
+
+% Progressbar
+\newdimen\beamer@progress@wd
+\newcommand{\insertprogressbar}{%
+  \begingroup
+  % width of the filled part = paperwidth * (current / total)
+  \beamer@progress@wd=\paperwidth
+  \multiply\beamer@progress@wd by \numexpr\insertframenumber\relax
+  \divide  \beamer@progress@wd by \numexpr\inserttotalframenumber\relax
+
+  \nointerlineskip
+  % draw a background track, then overlay the filled portion
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.6ex,dp=0ex]{progressbar}
+    \leavevmode
+    {\color{bg}\rule{\paperwidth}{0.6ex}}%
+    \hspace*{-\paperwidth}%
+    {\color{fg}\rule{\beamer@progress@wd}{0.6ex}}%
+  \end{beamercolorbox}%
+  \endgroup
+}
+
+% Footline
+\setbeamertemplate{footline}{%
+	\insertprogressbar
+	\begin{beamercolorbox}[wd = \paperwidth, sep = 1mm]{footline}%
+		\vspace*{0.8mm}
+		\begin{tabular}{l @{\quad\quad} l @{\quad\quad} l}%
+			\strut\textbf{\insertframenumber}\space\iflanguage{ngerman}{von}{of}\space\textbf{\inserttotalframenumber} &%
+			\insertauthor &%
+			\insertinstitute \\
+			\strut & \insertdate & \inserttitle \\
+		\end{tabular}%
+		\hfill%
+		\begin{tabular}{r}%
+			\@ifundefined{smalllogovalue}{%
+				\colorbox{red}{Set logo with \texttt{$\backslash$smalllogo\{...\}}}%
+			}{%
+				\includegraphics[height = 4.5mm]{\smalllogovalue} \\
+			}%
+		\end{tabular}%
+		\vspace*{-1.5mm}
+	\end{beamercolorbox}%
+}
+
+\endinput
