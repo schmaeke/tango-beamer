@@ -1,0 +1,13 @@
+# Aux. compilation files from latexmk
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.bib
